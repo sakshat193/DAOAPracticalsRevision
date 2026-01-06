@@ -10,7 +10,7 @@
 #define INF 1000000000
 
 /* Set to 1 to use the hard-coded distance matrix below. */
-#define USE_MANUAL_MATRIX 0
+#define USE_MANUAL_MATRIX 1
 
 static void printV(int v, int n)
 {

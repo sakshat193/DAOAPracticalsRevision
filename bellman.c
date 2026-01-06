@@ -12,7 +12,7 @@
 #define INF 1000000000
 
 /* Set to 1 to use the hard-coded adjacency matrix below. */
-#define USE_MANUAL_MATRIX 0
+#define USE_MANUAL_MATRIX 1
 
 typedef struct {
 	int u;
