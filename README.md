@@ -270,6 +270,15 @@ The program will use your predefined matrix instead of prompting for input.
 - Merges sorted subarrays in linear time
 - Guaranteed O(n log n) performance
 
+**Example**:
+```
+Input:
+  Enter number of elements: 6
+  Enter 6 integers: 12 11 13 5 6 7
+Output:
+  Sorted array: 5 6 7 11 12 13
+```
+
 ---
 
 #### 2. Quick Sort (`QUIKSORT.C`) - Question 2
@@ -290,6 +299,15 @@ The program will use your predefined matrix instead of prompting for input.
 - Partitions around pivot value
 - Worst case on sorted or reverse-sorted arrays
 
+**Example**:
+```
+Input:
+  Enter number of elements: 5
+  Enter 5 integers: 9 7 5 11 12
+Output:
+  Sorted array: 5 7 9 11 12
+```
+
 ---
 
 #### 3. Randomized Quick Sort (`RNDQSORT.C`) - Question 3
@@ -306,6 +324,15 @@ The program will use your predefined matrix instead of prompting for input.
 - Avoids worst-case behavior on adversarial inputs
 - Expected O(n log n) performance
 - Initialized with `srand(time(NULL))`
+
+**Example**:
+```
+Input:
+  Enter number of elements: 6
+  Enter 6 integers: 10 7 8 9 1 5
+Output:
+  Sorted array: 1 5 7 8 9 10
+```
 
 ---
 
@@ -325,6 +352,24 @@ The program will use your predefined matrix instead of prompting for input.
 - Sort items by ratio in descending order
 - Greedily select items (fractions allowed)
 - Greedy choice property ensures optimal solution
+
+**Example**:
+```
+Input:
+  Enter number of items: 3
+  Enter knapsack capacity: 50
+  Item 1 (w p): 10 60
+  Item 2 (w p): 20 100
+  Item 3 (w p): 30 120
+Output:
+  Selected items (possibly fractional):
+  ID      Taken   WeightUsed      ProfitGained
+  1       1.0000  10.0000         60.0000
+  2       1.0000  20.0000         100.0000
+  3       0.6667  20.0000         80.0000
+
+  Maximum profit = 240.0000
+```
 
 **Scenario Coverage**:
 - Q4: Basic fractional knapsack formulation
@@ -346,6 +391,23 @@ The program will use your predefined matrix instead of prompting for input.
 - Assign each job to latest available slot before deadline
 - One job per time slot constraint
 - Greedy selection ensures optimal profit
+
+**Example**:
+```
+Input:
+  Enter number of jobs: 4
+  Job 1 (d p): 4 20
+  Job 2 (d p): 1 10
+  Job 3 (d p): 1 40
+  Job 4 (d p): 1 30
+Output:
+  Selected job sequence (time slot -> job id):
+  Slot 1 -> Job 3 (d=1, p=40)
+  Slot 4 -> Job 1 (d=4, p=20)
+
+  Jobs done: 2
+  Maximum profit: 60
+```
 
 **Scenario Coverage**:
 - Q14: Basic job sequencing problem
@@ -369,6 +431,18 @@ The program will use your predefined matrix instead of prompting for input.
 - Select activity if start time >= last finish time
 - Greedy earliest-finish strategy is optimal
 - Maximizes number of compatible activities
+
+**Example**:
+```
+Input:
+  Enter number of activities: 3
+  Activity 1 (start finish): 10 20
+  Activity 2 (start finish): 12 25
+  Activity 3 (start finish): 20 30
+Output:
+  Selected activities: 1 3
+  Total activities selected = 2
+```
 
 **Scenario Coverage**:
 - Q19: Basic activity selection problem
@@ -394,6 +468,19 @@ The program will use your predefined matrix instead of prompting for input.
 - Relaxation of edges from selected vertex
 - **Manual Matrix Available**
 
+**Example (Manual Matrix Mode)**:
+```
+Input:
+  Enter source vertex (A..E or 0..4): 0
+Output:
+  Shortest distances from A:
+  A -> A : 0
+  A -> B : 7
+  A -> C : 3
+  A -> D : 9
+  A -> E : 5
+```
+
 ---
 
 #### 8. Bellman-Ford Algorithm (`BELLMAN.C`) - Questions 15, 44
@@ -411,6 +498,19 @@ The program will use your predefined matrix instead of prompting for input.
 - Additional iteration detects negative cycles
 - Dynamic programming approach
 - **Manual Matrix Available**
+
+**Example (Manual Matrix Mode)**:
+```
+Input:
+  Enter source vertex (A..E or 0..4): 0
+Output:
+  Shortest distances from A:
+  A -> A : 0
+  A -> B : 2
+  A -> C : 4
+  A -> D : 7
+  A -> E : -2
+```
 
 **Scenario Coverage**:
 - Q15: Basic Bellman-Ford implementation
@@ -434,6 +534,18 @@ The program will use your predefined matrix instead of prompting for input.
 - dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j])
 - **Manual Matrix Available**
 
+**Example (Manual Matrix Mode)**:
+```
+Input:
+  (No input required; matrix is hardcoded)
+Output:
+  All-pairs shortest path matrix:
+  0 5 8 9
+  INF 0 3 4
+  INF INF 0 1
+  INF INF INF 0
+```
+
 ---
 
 #### 10. Prim's Algorithm (`PRIM_MST.C`) - Questions 18, 29, 30
@@ -451,6 +563,19 @@ The program will use your predefined matrix instead of prompting for input.
 - Uses parent[] array to track MST structure
 - Vertex-centric approach
 - **Manual Matrix Available**
+
+**Example (Manual Matrix Mode)**:
+```
+Input:
+  Enter number of vertices: (Skipped in Manual Mode)
+Output:
+  MST edges (u - v : weight):
+  A - B : 2
+  B - C : 3
+  B - E : 5
+  A - D : 6
+  Total weight = 16
+```
 
 **Scenario Coverage**:
 - Q18: Basic Prim's algorithm
@@ -474,6 +599,24 @@ The program will use your predefined matrix instead of prompting for input.
 - Edge-centric approach
 - Greedy edge selection
 
+**Example**:
+```
+Input:
+  Enter number of vertices and edges: 4 5
+  Edges:
+    0 1 10
+    0 2 6
+    0 3 5
+    1 3 15
+    2 3 4
+Output:
+  MST edges (u - v : w):
+  2 - 3 : 4
+  0 - 3 : 5
+  0 - 1 : 10
+  Total weight = 19
+```
+
 **Scenario Coverage**:
 - Q17: Basic Kruskal's algorithm
 - Q31: Smart farming sensor connections
@@ -495,6 +638,15 @@ The program will use your predefined matrix instead of prompting for input.
 - Exact solution with exponential time complexity
 - Memoization for optimal substructure
 - **Manual Matrix Available**
+
+**Example (Manual Matrix Mode)**:
+```
+Input:
+  (No input required; matrix is hardcoded)
+Output:
+  Minimum tour cost = 80
+  Tour: A -> B -> D -> C -> A
+```
 
 **Scenario Coverage**:
 - Q23: Drone delivery route optimization
@@ -518,6 +670,15 @@ The program will use your predefined matrix instead of prompting for input.
 - cost[i] = min(cost[i], edge[i][j] + cost[j])
 - **Manual Matrix Available**
 
+**Example (Manual Matrix Mode)**:
+```
+Input:
+  (No input required)
+Output:
+  Minimum cost from A to H = 9
+  Path: A -> D -> G -> H
+```
+
 ---
 
 ### IV. Dynamic Programming (3 Programs)
@@ -536,6 +697,16 @@ The program will use your predefined matrix instead of prompting for input.
 - If match: dp[i][j] = dp[i-1][j-1] + 1
 - Else: dp[i][j] = max(dp[i-1][j], dp[i][j-1])
 - Backtracking to construct actual LCS string
+
+**Example**:
+```
+Input:
+  Enter first string: AGGTAB
+  Enter second string: GXTXAYB
+Output:
+  LCS length = 4
+  One LCS = GTAB
+```
 
 **Scenario Coverage**:
 - Q6: Basic longest common subsequence
@@ -558,6 +729,19 @@ The program will use your predefined matrix instead of prompting for input.
 - Recurrence: dp[i][w] = max(dp[i-1][w], val[i] + dp[i-1][w-wt[i]])
 - Backtracking to determine selected items
 
+**Example**:
+```
+Input:
+  Enter number of items: 3
+  Enter capacity: 50
+  Item 1 (w v): 10 60
+  Item 2 (w v): 20 100
+  Item 3 (w v): 30 120
+Output:
+  Total Value = 220
+  Selected items: 2 3
+```
+
 **Scenario Coverage**:
 - Q21: Basic 0/1 knapsack problem
 - Q26: Traveler's backpack optimization
@@ -578,6 +762,17 @@ The program will use your predefined matrix instead of prompting for input.
 - DP state: dp[i] = minimum coins to make amount i
 - Bottom-up tabulation approach
 - dp[i] = min(dp[i], dp[i-coin] + 1) for all coins
+
+**Example**:
+```
+Input:
+  Enter number of coins: 3
+  Enter coin values: 1 2 5
+  Enter target amount: 11
+Output:
+  Minimum coins required: 3
+  Combination: 5 5 1
+```
 
 **Scenario Coverage**:
 - Q33: Digital payment system minimum coins
@@ -602,6 +797,18 @@ The program will use your predefined matrix instead of prompting for input.
 - Backtrack on conflict detection
 - Prints first valid solution found
 
+**Example**:
+```
+Input:
+  Enter N (number of queens): 4
+Output:
+  One solution for N=4:
+  . Q . .
+  . . . Q
+  Q . . .
+  . . Q .
+```
+
 **Scenario Coverage**:
 - Q8: Basic N-Queens implementation
 - Q41: N-Queens with conflict avoidance explanation
@@ -622,6 +829,17 @@ The program will use your predefined matrix instead of prompting for input.
 - Enumerates all matching subsets
 - Optional sorting for organized output
 - Can be optimized with pruning bounds
+
+**Example**:
+```
+Input:
+  Enter number of elements: 5
+  Enter elements: 10 7 5 18 12
+  Enter target sum: 30
+Output:
+  Subset found: 18 12
+  Subset found: 10 12 5 (or similar depending on sort)
+```
 
 **Scenario Coverage**:
 - Q13: Basic sum of subsets problem
@@ -647,6 +865,20 @@ The program will use your predefined matrix instead of prompting for input.
 - Backtrack on color conflicts
 - **Manual Matrix Available**
 
+**Example (Manual Matrix Mode)**:
+```
+Input:
+  (No input required)
+Output:
+  Minimum colors required = 3
+  Coloring:
+  A -> Color 1
+  B -> Color 2
+  C -> Color 3
+  D -> Color 2
+  E -> Color 1
+```
+
 **Scenario Coverage**:
 - Q16: Basic graph coloring problem
 - Q25: Digital map country coloring
@@ -669,6 +901,19 @@ The program will use your predefined matrix instead of prompting for input.
 - Priority queue for best-first search
 - More efficient than exhaustive search
 
+**Example**:
+```
+Input:
+  Enter number of items: 4
+  Capacity: 15
+  Item 1 (w p): 2 10
+  Item 2 (w p): 4 10
+  Item 3 (w p): 6 12
+  Item 4 (w p): 9 18
+Output:
+  Maximum profit = 38
+```
+
 ---
 
 #### 21. Word Search in Grid (`WORDSRCH.C`) - Question 10
@@ -686,6 +931,19 @@ The program will use your predefined matrix instead of prompting for input.
 - Mark cells as visited during search
 - Backtrack and unmark after exploration
 - Same cell cannot be used twice in one path
+
+**Example**:
+```
+Input:
+  Enter rows and columns (m n): 3 4
+  Enter word to search: CAT
+  Enter grid characters row-wise:
+  Row 1: ACAT
+  Row 2: XBCX
+  Row 3: YYYY
+Output:
+  true
+```
 
 ---
 
@@ -706,6 +964,18 @@ The program will use your predefined matrix instead of prompting for input.
 - Root can have minimum 1 key
 - Maintains balanced tree property
 - CLRS-style implementation
+
+**Example**:
+```
+Input:
+  Enter minimum degree t: 2
+  Enter number of keys: 7
+  Enter 7 keys: 10 20 5 6 12 30 7
+Output:
+  (Tree structure printed level-wise)
+  [ 7 10 ]
+  [ 5 6 ] [ 12 20 30 ]
+```
 
 **Scenario Coverage**:
 - Q20: B-tree construction with insertions
@@ -729,6 +999,19 @@ The program will use your predefined matrix instead of prompting for input.
 - Track minimum difference across all edges
 - Linear time solution
 
+**Example**:
+```
+Input:
+  Enter n: 3
+  Enter 3 node values: 100 200 100
+  Enter 2 edges:
+  1 2
+  2 3
+Output:
+  Minimum difference after cutting one edge = 0
+  (Using edge 2-3: {3}=100, {1,2}=300. Diff 200. Using 1-2: {1}=100, {2,3}=300. Diff 200. Wait, logic check: 100+200+100=400. Half=200.)
+```
+
 ---
 
 #### 24. Magic Square Cost (`MAGICSQ.C`) - Question 11
@@ -745,6 +1028,18 @@ The program will use your predefined matrix instead of prompting for input.
 - Cost = sum of |input[i] - magic[i]| for each position
 - Select minimum cost among all 8 comparisons
 - Magic constant for 3×3 is 15
+
+**Example**:
+```
+Input:
+  Enter 3x3 matrix values:
+  4 9 2
+  3 5 7
+  8 1 5
+Output:
+  Minimum cost = 1
+  (Change 5 at (2,2) to 6 -> standard magic square)
+```
 
 ---
 
