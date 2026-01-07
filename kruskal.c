@@ -55,17 +55,43 @@ static void sortEdgesByWeight(Edge e[], int m)
 
 int main(void)
 {
+#define USE_MANUAL_MATRIX 1
+
 	int V, E, i;
 	Edge *e;
 	int *p, *r;
 	int cnt = 0;
 	int total = 0;
 
+#if USE_MANUAL_MATRIX
+	/* Edit this matrix manually. Use 0 for no edge. Diagonal can be 0. */
+	int n_manual = 5;
+	int manual[5][5] = {
+		{0, 2, 0, 6, 0},
+		{2, 0, 3, 8, 5},
+		{0, 3, 0, 0, 7},
+		{6, 8, 0, 0, 9},
+		{0, 5, 7, 9, 0}
+	};
+
+	V = n_manual;
+	E = 0;
+	int u, v;
+	// Count edges (undirected, so only upper triangle)
+	for (u = 0; u < V; u++) {
+		for (v = u + 1; v < V; v++) {
+			if (manual[u][v] != 0) {
+				E++;
+			}
+		}
+	}
+#else
 	printf("Enter number of vertices and edges: ");
 	if (scanf("%d %d", &V, &E) != 2 || V <= 0 || E < 0) {
 		printf("Invalid input.\n");
 		return 1;
 	}
+#endif
 
 	e = (Edge *)malloc((size_t)E * sizeof(Edge));
 	p = (int *)malloc((size_t)V * sizeof(int));
@@ -78,6 +104,19 @@ int main(void)
 		return 1;
 	}
 
+#if USE_MANUAL_MATRIX
+	int k = 0;
+	for (u = 0; u < V; u++) {
+		for (v = u + 1; v < V; v++) {
+			if (manual[u][v] != 0) {
+				e[k].u = u;
+				e[k].v = v;
+				e[k].w = manual[u][v];
+				k++;
+			}
+		}
+	}
+#else
 	printf("Enter edges (u v w) with vertices 0..%d (undirected):\n", V - 1);
 	for (i = 0; i < E; i++) {
 		if (scanf("%d %d %d", &e[i].u, &e[i].v, &e[i].w) != 3) {
@@ -95,6 +134,7 @@ int main(void)
 			return 1;
 		}
 	}
+#endif
 
 	for (i = 0; i < V; i++) {
 		p[i] = i;
