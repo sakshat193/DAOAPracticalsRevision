@@ -110,10 +110,37 @@ int main(void)
 	}
 
 	printf("Minimum colors required = %d\n", m);
-	printf("Coloring:\n");
+	printf("Coloring with minimum colors:\n");
 	for (i = 0; i < n; i++) {
 		printV(i, n);
 		printf(" -> Color %d\n", color[i]);
+	}
+
+	printf("\nEnter number of colors to try: ");
+	int userColors;
+	if (scanf("%d", &userColors) != 1 || userColors <= 0) {
+		printf("Invalid input.\n");
+		for (i = 0; i < n; i++) free(g[i]);
+		free(g);
+		free(color);
+		return 1;
+	}
+
+	for (i = 0; i < n; i++) color[i] = 0;
+	if (colorUtil(g, n, userColors, color, 0)) {
+		int maxColor = 0;
+		for (i = 0; i < n; i++) {
+			if (color[i] > maxColor) maxColor = color[i];
+		}
+		printf("Graph can be colored with %d colors (actually used %d).\n", userColors, maxColor);
+		printf("Coloring:\n");
+		for (i = 0; i < n; i++) {
+			printV(i, n);
+			printf(" -> Color %d\n", color[i]);
+		}
+	} else {
+		printf("Graph cannot be colored with %d colors.\n", userColors);
+		printf("Minimum %d colors are required.\n", m);
 	}
 
 	for (i = 0; i < n; i++) free(g[i]);
